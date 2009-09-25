@@ -1,0 +1,46 @@
+my own wishes for this little scheme
+------------------------------------
+
+* implement char=?, char<?, char>?, char<=?, and char>=?
+  (char<? #\a #\b) => #t
+
+* readline support (blah, use emacs it's good enough)
+
+* eval code in any given binding (and, hence, expose the binding somehow)
+
+
+tutorial exercises
+------------------
+
+* Add data types and parsers to support the full numeric tower of Scheme numeric types. Haskell has built-in
+  types to represent many of these; check the Prelude. For the others, you can define compound types that
+  represent eg. a Rational as a numerator and denominator, or a Complex as a real and imaginary part (each
+  itself a Real number).
+
+  http://www.schemers.org/Documents/Standards/R5RS/HTML/r5rs-Z-H-9.html#%_sec_6.2.1
+
+
+* Add support for the backquote syntactic sugar: the Scheme standard details what it should expand into
+  (quasiquote/unquote).
+
+  http://www.schemers.org/Documents/Standards/R5RS/HTML/r5rs-Z-H-7.html#%_sec_4.2.6
+
+* Add support for vectors. The Haskell representation is up to you: GHC does have an Array data type, but it
+  can be difficult to use. Strictly speaking, a vector should have constant-time indexing and updating, but
+  destructive update in a purely functional language is difficult. You may have a better idea how to do this
+  after the section on set!, later in this tutorial.
+
+  http://www.schemers.org/Documents/Standards/R5RS/HTML/r5rs-Z-H-9.html#%_sec_6.3.6
+  http://www.haskell.org/ghc/docs/latest/html/libraries/base/Data-Array.html
+
+* Instead of using the try combinator, left-factor the grammar so that the common subsequence is its own
+  parser. You should end up with a parser that matches a string of expressions, and one that matches either
+  nothing or a dot and a single expressions. Combining the return values of these into either a List or a
+  DottedList is left as a (somewhat tricky) exercise for the reader: you may want to break it out into another
+  helper function.
+
+
+* Implement <strike>cond</strike> and case expressions.
+
+* Add the rest of the string functions. You don't yet know enough to do string-set!; this is difficult to
+  implement in Haskell, but you'll have enough information after the next 2 sections
